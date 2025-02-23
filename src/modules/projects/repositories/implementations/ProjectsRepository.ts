@@ -14,6 +14,7 @@ export class ProjectsRepository implements IProjectsRepository {
     }
 
 
+
     async create({ category, date_defense, description, file_path, grade_defense, members, subject, tutor }: ICreateProjectDTO): Promise<Project> {
 
         const project = this.repository.create({ category, date_defense, description, file_path, grade_defense, members, subject, tutor })
@@ -42,4 +43,9 @@ export class ProjectsRepository implements IProjectsRepository {
         return projects
     }
 
+
+    async findById(id: string): Promise<Project> {
+        const project = await this.repository.findOne({ where: { id } })
+        return project
+    }
 }
