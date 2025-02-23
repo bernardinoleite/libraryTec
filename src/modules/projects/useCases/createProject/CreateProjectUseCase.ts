@@ -11,6 +11,7 @@ export class CreateProjectUseCase {
 
     async execute({ category, date_defense, description, file_path, grade_defense, members, subject, tutor }: ICreateProjectDTO): Promise<Project> {
 
+        console.log({ category, date_defense, description, file_path, grade_defense, members, subject, tutor })
         const project = await this.projectRepository.create({ category, date_defense, description, file_path, grade_defense, members, subject, tutor })
 
         return project

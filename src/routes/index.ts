@@ -5,6 +5,8 @@ import { subjectRouter } from "./subject.routes";
 
 const router = Router()
 
+
+
 router.use("/users", userRouter)
 router.use("/projects", projectRouter)
 router.use("/subjects", subjectRouter)
