@@ -10,6 +10,18 @@ export class UserRepository implements IUserRepository {
     constructor() {
         this.repository = AppDataSource.getRepository(User)
     }
+    async delete(id: string): Promise<void> {
+        await this.repository.delete({ id })
+    }
+    async countUsers(): Promise<number> {
+        const usersCounted = await this.repository.count()
+        return usersCounted
+    }
+    async findAll(): Promise<User[]> {
+        const users = await this.repository.find()
+
+        return users
+    }
 
     async create({ name, email, password }: ICreateUserDTO): Promise<void> {
 
