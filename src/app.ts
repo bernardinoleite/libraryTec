@@ -2,7 +2,7 @@ import express from "express" // importando a biblioteca express para fazer o ge
 import cors from "cors"
 import { router } from "./routes" // importar as minhas rotas que estão dentro da pasta routes
 import path from "path"
-const port = process.env.PORT // estou a pegar a porta para disponibilizar acesso ao servidor
+const port = process.env.PORT || 2908// estou a pegar a porta para disponibilizar acesso ao servidor
 
 const app = express() //inicio o express
 app.use("/files", express.static(path.resolve(__dirname, "..", "uploads")));

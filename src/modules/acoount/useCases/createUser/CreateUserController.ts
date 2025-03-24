@@ -23,7 +23,7 @@ export class CreateUserController {
                 statusCode: 201
             })
         } catch (error) {
-            return response.status(error.statusCode).json(error)
+            return response.status(400).json(error)
         }
 
     }
