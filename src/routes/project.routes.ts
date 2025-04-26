@@ -7,6 +7,7 @@ import { filterProjectsController } from "../modules/projects/useCases/filterPro
 import multer from "multer"
 import { uploadFileController } from "../modules/projects/useCases/uploadFile";
 import { findProjectController } from "../modules/projects/useCases/findProject";
+import { deleteProjectController } from "../modules/projects/useCases/deleteProject";
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -30,16 +31,21 @@ projectRouter.post("/upload", upload.single("file"), (request, response) => {
 projectRouter.post("/", (request, response) => {
     createProjectController.handle(request, response)
 })
+
 projectRouter.get("/", (request, response) => {
     listProjectsController.handle(request, response)
+})
+
+projectRouter.get("/filter", (request, response) => {
+    filterProjectsController.handle(request, response)
 })
 projectRouter.get("/:id", (request, response) => {
     findProjectController.handle(request, response)
 })
-projectRouter.get("/filter", (request, response) => {
-    filterProjectsController.handle(request, response)
-})
 
+projectRouter.delete("/:id", (request, response) => {
+    deleteProjectController.handle(request, response);
+})
 
 export {
     projectRouter

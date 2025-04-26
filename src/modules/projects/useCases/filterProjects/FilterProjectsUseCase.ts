@@ -12,6 +12,7 @@ export class FilterProjectsUseCase {
 
     async execute({ category, date_defense, tutor }): Promise<Project[]> {
         let whereClause: any = {};
+        console.log({ category, date_defense, tutor })
 
         if (category !== "undefined" && category !== undefined) {
             whereClause.category = category;

@@ -8,4 +8,5 @@ export interface IProjectsRepository {
     list(): Promise<Project[]>
     filter({ category, date_defense, tutor }: { category?: string, tutor?: string, date_defense?: string }): Promise<Project[]>
     findById(id: string): Promise<Project>
+    deleteById(id: string): Promise<any>
 }

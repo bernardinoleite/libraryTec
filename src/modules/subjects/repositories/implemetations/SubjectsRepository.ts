@@ -12,6 +12,14 @@ export class SubjectsRepository implements ISubjectsRepository {
     constructor() {
         this.repository = AppDataSource.getRepository(Subject)
     }
+    async findById(id: string): Promise<any> {
+        return await this.repository.findOneBy({ id })
+    }
+    async deleteOne(id: string): Promise<any> {
+
+        await this.repository.delete({ id })
+
+    }
     async create({ creator, category, description, objective, phone_number, subject, reference }: ISubjectCreateDTO): Promise<Subject> {
 
         const subjectObj = this.repository.create({ creator, category, description, objective, phone_number, subject, reference })

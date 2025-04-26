@@ -16,7 +16,7 @@ export class User {
     @Column()
     password: string
 
-    @Column({ default: false })
+    @Column({ default: true })
     is_admin?: boolean
 
     @CreateDateColumn()

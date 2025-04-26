@@ -11,9 +11,9 @@ export class FilterSubjectsController {
 
     async handle(request: Request, response: Response): Promise<Response> {
         const { category, creator, created_at } = request.query
-
         try {
-            const subjects = await this.filterSubjectsUseCase.execute({ category, creator, created_at })
+            const categoryLower = String(category).toLowerCase()
+            const subjects = await this.filterSubjectsUseCase.execute({ category: categoryLower, creator, created_at })
             return response.status(200).json(subjects)
         } catch (error) {
             return response.status(401).json(error)

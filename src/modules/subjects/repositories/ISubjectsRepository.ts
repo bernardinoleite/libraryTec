@@ -10,4 +10,7 @@ export interface ISubjectsRepository {
 
     filter({ category, created_at, creator }: { category?: string, creator?: string, created_at?: Date }): Promise<Subject[]>
 
+    findById(id: string): Promise<any>
+
+    deleteOne(id: string): Promise<any>
 }

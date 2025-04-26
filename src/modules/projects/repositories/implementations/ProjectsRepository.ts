@@ -12,8 +12,9 @@ export class ProjectsRepository implements IProjectsRepository {
     constructor() {
         this.repository = AppDataSource.getRepository(Project)
     }
-
-
+    async deleteById(id: string): Promise<any> {
+        await this.repository.delete({ id })
+    }
 
     async create({ category, date_defense, description, file_path, grade_defense, members, subject, tutor }: ICreateProjectDTO): Promise<Project> {
 

@@ -13,7 +13,7 @@ userRouter.post("/", (request, response) => {
 userRouter.delete("/:id", (request, response) => {
     deleteUserController.handle(request, response)
 })
-userRouter.get("/findAll", (request, response) => {
+userRouter.get("/", (request, response) => {
     listUsersController.handle(request, response)
 })
 userRouter.get("/countAll", (request, response) => {
