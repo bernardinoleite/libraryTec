@@ -23,12 +23,19 @@ export class UserRepository implements IUserRepository {
         return users
     }
 
-    async create({ name, email, password }: ICreateUserDTO): Promise<void> {
+    async create({ name, email, password, is_admin = false }: ICreateUserDTO): Promise<void> {
+        console.log({ name, email, password, is_admin });
+        is_admin = Boolean(is_admin)
+        const user = this.repository.create({
+            name,
+            email,
+            password,
+            is_admin
+        });
 
-        const user = this.repository.create({ name, email, password })
-        await this.repository.save(user)
-
+        await this.repository.save(user);
     }
+
 
     async findByEmail(email: string): Promise<User> {
 
